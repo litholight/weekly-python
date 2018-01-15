@@ -14,9 +14,21 @@ def myrange2(first, second=None, step=1):
 
     return print(output)
 
-myrange2(10)
+def myrange3(first, second=None, step=1):
+    if second is None:
+        currrent = 0
+        end = first
+    else:
+        current = first
+        end = second
 
-myrange2(10,20)
+    while current < end:
+        yield current
+        current += step
 
-myrange2(10,20,2)
+list(myrange3(10))
+
+list(myrange3(10,20))
+
+list(myrange3(10,20,2))
 
