@@ -6,9 +6,13 @@ def myrange2(first, second=None, step=1):
     else:
         current = first
         end = second
-    print("first = {}".format(current))
-    print("second = {}".format(end))
-    print("step = {}".format(step))
+        
+    output = []
+    while current < end:
+        output.append(current)
+        current += step
+
+    return print(output)
 
 myrange2(10)
 
