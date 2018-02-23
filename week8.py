@@ -1,12 +1,16 @@
 import os
 from collections import defaultdict
 
+class NonFileError(Exception):
+    pass
+
 def file_function(directory, any_file_func):
     success_dict = {}
     failure_dict = {}
     for filename in os.listdir(directory):
         if os.path.isdir(filename):
-            failure_dict[filename] = "Exception 1"
+            ex = NonFileError('This is a folder.')
+            failure_dict[filename] = ex
             break
         success_dict[filename] = any_file_func(filename)
     return success_dict, failure_dict
