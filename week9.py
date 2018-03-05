@@ -2,8 +2,7 @@ import random
 
 
 def rand_forty():
-    for x in range(20):
-        return "(" + '{:3}'.format(random.randint(-40,40)) + ")"
+    return "(" + '{:3}'.format(random.randint(-40,40)) + ")"
     
 randop = [" - ", " + "]
 
