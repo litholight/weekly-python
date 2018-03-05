@@ -1,7 +1,7 @@
 import random
 
 number_source = range(-40,40)
-sign_source = [' + ',' - ']*4
+sign_source = ['+','-']*4
 filename = 'problems.txt'
 
 with open(filename, 'w') as f:
