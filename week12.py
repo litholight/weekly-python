@@ -2,31 +2,21 @@
 import hashlib
 import os
 
-class DirFileHash():
+class DirFileHash(object):
 
     def __init__(self, directory):
-        self.theseFiles = os.listdir(directory)
+        if os.path.isdir(directory):
+            self.directory = directory
+        else:
+            print("This is not a valid directory: %s" %directory)
         
-    def __getitiem__(self, theseFiles, fileToHash):
-        filesHashDir = {}
+    def __getitem__(self, fileToHash):
+        try:
+            with open(os.path.join(self.directory, fileToHash),'rb') as f:
+                return(hashlib.md5(f.read()).hexdigest())
+        except(FileNotFoundError, TypeError):
+            return None
 
-        for each_file in theseFiles:
-            m = hashlib.md5()
-            f = open(each_file,'r')
-            fr = f.read()
-            fhash = update(fr.encode('utf-8'))
-            print(each_file) 
-            if fileToHash == each_file:
-                print(fhash)
-                break
-
-
-#m2 = hashlib.md5()
-#f1 = open("open1.txt", 'r')
-#bibleverse = f1.read()
-#m2.update(bibleverse.encode('utf-8'))
-#print(m2.digest())
-#f1.close()
-
-d = DirFileHash("/")
-d[redditbot.py]
+#directory = "./"
+#d = DirFileHash(directory)
+#print(d["redditbot.py"])
