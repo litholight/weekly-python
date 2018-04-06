@@ -17,7 +17,8 @@ def add_person(addresses):
     addresses.append(address)
     
     currentfile = 'pickle-' + time.strftime("%Y%m%d-%H%M%S") + '.p'
-    pickle.dump(addresses, open('./pickles/' + currentfile, 'ab'))
+    with open('./pickles/' + currentfile, 'ab') as f:
+        pickle.dump(currentfile, f)
     
 def restore():
     print("What file do you want to use a restore point? ")
